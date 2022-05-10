@@ -16,7 +16,7 @@ class PingError extends Error {
   }
 }
 
-function ping(host: string, port: number) {
+function ping(host: string, port: number, options: ping.Options = {}) {
   const socket = new Socket()
 
   const PacketID = Buffer.from([0])
@@ -30,6 +30,8 @@ function ping(host: string, port: number) {
   const HandshakePacketLength = Buffer.from(itob(HandshakePacketContent.length, 1))
   const HandshakePacket = Buffer.concat([HandshakePacketLength, HandshakePacketContent])
   const RequestPacket = Buffer.from([1, 0])
+
+  const { timeout = 5000 } = options
 
   return new Promise<ping.Result>((resolve, reject) => {
     let response = ''
@@ -55,7 +57,7 @@ function ping(host: string, port: number) {
       }
     })
 
-    socket.setTimeout(5000, () => {
+    socket.setTimeout(timeout, () => {
       socket.end()
       if (!response) reject(new PingError('connect-timeout', host, port))
     })
@@ -75,6 +77,10 @@ function ping(host: string, port: number) {
 namespace ping {
   export type Error = PingError
   export const Error = PingError
+
+  export interface Options {
+    timeout?: number
+  }
 
   export interface Result {
     version: Result.Version

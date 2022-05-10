@@ -12,7 +12,7 @@ Ping Minecraft Server.
 ```ts
 import ping from 'ping-minecraft-server'
 
-ping(url)
+ping(host, port, options?)
 
 /* {
   version: ...,
@@ -21,3 +21,12 @@ ping(url)
   favicon: ...,
 } */
 ```
+
+## Options
+
+### timeout
+
+- **type:** `number`
+- **default:** `5000`
+
+Connect timeout in milliseconds.
