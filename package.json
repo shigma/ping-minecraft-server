@@ -1,0 +1,33 @@
+{
+  "name": "ping-minecraft-server",
+  "description": "Ping a Minecraft Server",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "author": "Shigma <shigma10826@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shigma/ping-minecraft-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shigma/ping-minecraft-server/issues"
+  },
+  "homepage": "https://github.com/shigma/ping-minecraft-server",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "keywords": [
+    "minecraft",
+    "ping",
+    "status",
+    "server"
+  ],
+  "devDependencies": {
+    "@types/node": "^17.0.27",
+    "typescript": "^4.6.3"
+  }
+}
